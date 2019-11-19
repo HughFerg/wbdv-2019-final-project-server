@@ -2,8 +2,8 @@ package com.example.wbdv2019finalprojectserver.controllers;
 
 import java.util.List;
 
-import com.example.wbdv2019finalprojectserver.models.User;
-import com.example.wbdv2019finalprojectserver.services.UserService;
+import com.example.wbdv2019finalprojectserver.models.UserAdmin;
+import com.example.wbdv2019finalprojectserver.services.UserAdminService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "*", allowCredentials = "true", allowedHeaders = "*")
 @RestController
-class UserController{
+class UserAdminController{
 
     @Autowired
-    UserService us;
+    UserAdminService uas;
 
-    @GetMapping("/api/users")
-    public List<User> findAllUsers(){
-        return us.findAllUsers();       
+    @GetMapping("/api/useradmins")
+    public List<UserAdmin> findAllUserAdmins(){
+        return uas.findAllUserAdmins();      
     }
 
 }

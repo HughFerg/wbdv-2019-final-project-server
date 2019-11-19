@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -21,14 +22,9 @@ public class Restaurant{
     @JsonIgnore
     @ManyToMany(mappedBy = "likedRestaurants")
     private List<User> userLikes;
-
-    public List<User> getUserLikes() {
-        return this.userLikes;
-    }
-
-    public void setUserLikes(List<User> userLikes) {
-        this.userLikes = userLikes;
-    }
+    @ManyToOne
+    @JsonIgnore
+    private UserAdmin admin;
 
     public Integer getId() {
         return this.Id;
@@ -44,5 +40,20 @@ public class Restaurant{
 
     public void setYelpLink(String yelpLink) {
         this.yelpLink = yelpLink;
+    }
+    public UserAdmin getAdmin() {
+        return this.admin;
+    }
+
+    public void setAdmin(UserAdmin admin) {
+        this.admin = admin;
+    }
+
+    public List<User> getUserLikes() {
+        return this.userLikes;
+    }
+
+    public void setUserLikes(List<User> userLikes) {
+        this.userLikes = userLikes;
     }
 }
