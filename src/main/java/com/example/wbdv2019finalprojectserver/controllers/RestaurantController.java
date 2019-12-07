@@ -39,7 +39,7 @@ class RestaurantController{
     }
 
     @PostMapping("/api/restaurants")
-    public Restaurant createRestaurant(Restaurant restaurant){
+    public Restaurant createRestaurant(@RequestBody Restaurant restaurant){
         return rs.createRestaurant(restaurant);
     }
 
