@@ -12,8 +12,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name= "users")
-public class User{
+@Table(name = "users")
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -22,12 +22,9 @@ public class User{
     private String userName;
     private String password;
     private Double locationLong;
-    private Double LocationLat;
+    private Double locationLat;
     @ManyToMany
-    @JoinTable(
-        name = "restaurant_like", 
-        joinColumns = @JoinColumn(name = "user_id"), 
-        inverseJoinColumns = @JoinColumn(name = "restaurant_id"))
+    @JoinTable(name = "restaurant_like", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "restaurant_id"))
     private List<Restaurant> likedRestaurants;
 
     public List<Restaurant> getLikedRestaurants() {
@@ -87,11 +84,11 @@ public class User{
     }
 
     public Double getLocationLat() {
-        return this.LocationLat;
+        return this.locationLat;
     }
 
-    public void setLocationLat(Double LocationLat) {
-        this.LocationLat = LocationLat;
+    public void setLocationLat(Double locationLat) {
+        this.locationLat = locationLat;
     }
-    
+
 }

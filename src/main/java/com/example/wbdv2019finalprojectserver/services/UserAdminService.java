@@ -30,7 +30,7 @@ public class UserAdminService{
         return repository.save(userAdmin);
     }
 
-    public UserAdmin updateUseradmin(UserAdmin userAdmin, Integer id){
+    public UserAdmin updateUserAdmin(UserAdmin userAdmin, Integer id){
         UserAdmin newUserAdmin = repository.findUserAdminById(id);
         newUserAdmin.setId(id);
         if(userAdmin.getEmail()!=null){

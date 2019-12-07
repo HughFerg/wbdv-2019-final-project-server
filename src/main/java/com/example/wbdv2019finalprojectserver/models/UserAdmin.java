@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "useradmins")
-public class UserAdmin{
+public class UserAdmin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +21,7 @@ public class UserAdmin{
     private String email;
     private String password;
     private Double locationLong;
-    private Double LocationLat;
+    private Double locationLat;
 
     @OneToMany(mappedBy = "admin")
     private List<Restaurant> restaurants;
@@ -75,11 +75,11 @@ public class UserAdmin{
     }
 
     public Double getLocationLat() {
-        return this.LocationLat;
+        return this.locationLat;
     }
 
-    public void setLocationLat(Double LocationLat) {
-        this.LocationLat = LocationLat;
+    public void setLocationLat(Double locationLat) {
+        this.locationLat = locationLat;
     }
 
     public List<Restaurant> getRestaurants() {

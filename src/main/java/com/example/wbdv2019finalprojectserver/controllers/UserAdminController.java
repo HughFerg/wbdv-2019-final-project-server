@@ -43,7 +43,7 @@ class UserAdminController{
 
     @PutMapping("/api/useradmins/{id}")
     public UserAdmin updateUser(@PathVariable("id") Integer id, @RequestBody UserAdmin user){
-        return uas.updateUseradmin(user, id);
+        return uas.updateUserAdmin(user, id);
     }
 
 }
