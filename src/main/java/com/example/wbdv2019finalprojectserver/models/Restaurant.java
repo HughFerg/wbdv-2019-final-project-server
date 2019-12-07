@@ -23,8 +23,8 @@ public class Restaurant{
     @JsonIgnore
     @ManyToMany(mappedBy = "likedRestaurants")
     private List<User> userLikes;
-    @ManyToOne
     @JsonIgnore
+    @ManyToOne
     private UserAdmin useradmin;
 
     public Integer getId() {
@@ -55,8 +55,8 @@ public class Restaurant{
         return this.useradmin;
     }
 
-    public void setUserAdmin(UserAdmin admin) {
-        this.useradmin = admin;
+    public void setUserAdmin(UserAdmin useradmin) {
+        this.useradmin = useradmin;
     }
 
     public List<User> getUserLikes() {
