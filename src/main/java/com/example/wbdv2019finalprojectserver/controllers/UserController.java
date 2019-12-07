@@ -37,7 +37,7 @@ class UserController{
     }
 
     @PostMapping("/api/users")
-    public User createUser(User user){
+    public User createUser(@RequestBody User user){
         return us.createUser(user);
     }
 

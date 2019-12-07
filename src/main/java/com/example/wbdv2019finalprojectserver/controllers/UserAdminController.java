@@ -37,7 +37,7 @@ class UserAdminController{
     }
 
     @PostMapping("/api/useradmins")
-    public UserAdmin createUser(UserAdmin userAdmin){
+    public UserAdmin createUser(@RequestBody UserAdmin userAdmin){
         return uas.createUserAdmin(userAdmin);
     }
 
