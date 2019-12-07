@@ -35,6 +35,7 @@ public class UserAdminService{
         newUserAdmin.setId(id);
         newUserAdmin.setEmail(userAdmin.getEmail());
         newUserAdmin.setName(userAdmin.getName());
+        newUserAdmin.setUserName(userAdmin.getUserName());
         newUserAdmin.setPassword(userAdmin.getPassword());
         newUserAdmin.setLocationLat(userAdmin.getLocationLat());
         newUserAdmin.setLocationLong(userAdmin.getLocationLong());

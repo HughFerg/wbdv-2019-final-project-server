@@ -34,6 +34,7 @@ public class UserService{
         newUser.setId(id);
         newUser.setEmail(user.getEmail());
         newUser.setLikedRestaurants(user.getLikedRestaurants());
+        newUser.setUserName(user.getUserName());
         newUser.setName(user.getName());
         newUser.setPassword(user.getPassword());
         newUser.setLocationLat(user.getLocationLat());

@@ -14,6 +14,7 @@ public class UserAdmin{
     @Id
     private Integer id;
     private String name;
+    private String userName;
     private String email;
     private String password;
     private Double locationLong;
@@ -44,6 +45,14 @@ public class UserAdmin{
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getUserName() {
+        return this.userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
