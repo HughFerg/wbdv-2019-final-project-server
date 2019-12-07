@@ -2,6 +2,7 @@ package com.example.wbdv2019finalprojectserver.services;
 
 import java.util.List;
 import com.example.wbdv2019finalprojectserver.models.Restaurant;
+import com.example.wbdv2019finalprojectserver.models.User;
 import com.example.wbdv2019finalprojectserver.repositories.RestaurantRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,31 @@ public class RestaurantService{
 
     public List<Restaurant> findAllRestaurants(){
         return repository.findAllRestaurants();     
+    }
+
+    public Restaurant findRestaurantById(Integer restaurantId){
+        return repository.findRestaurantById(restaurantId);
+    }
+
+    public void deleteRestaurant(Integer restaurantId){
+        repository.deleteById(restaurantId);
+    }
+
+    public Restaurant createRestaurant(Restaurant restaurant){
+        return repository.save(restaurant);
+    }
+
+    public Restaurant updateRestaurant(Restaurant restaurant, Integer id){
+        Restaurant newRestaurant = repository.findRestaurantById(id);
+        newRestaurant.setAdmin(restaurant.getAdmin());
+        newRestaurant.setName(restaurant.getName());
+        newRestaurant.setUserLikes(restaurant.getUserLikes());
+        newRestaurant.setYelpLink(restaurant.getYelpLink());
+        return repository.save(newRestaurant);
+    }
+    
+    public List<User> getRestaurauntLikes(Integer id){
+        return repository.getRestaurantLikes(id);
     }
 
 }

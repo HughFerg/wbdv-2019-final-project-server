@@ -18,4 +18,28 @@ public class UserAdminService{
         return repository.findAllUserAdmins();    
     }
 
+    public UserAdmin findUserAdminById(Integer userId){
+        return repository.findUserAdminById(userId);
+    }
+
+    public void deleteUserAdmin(Integer useradminId){
+        repository.deleteById(useradminId);
+    }
+
+    public UserAdmin createUserAdmin(UserAdmin userAdmin){
+        return repository.save(userAdmin);
+    }
+
+    public UserAdmin updateUseradmin(UserAdmin userAdmin, Integer id){
+        UserAdmin newUserAdmin = repository.findUserAdminById(id);
+        newUserAdmin.setId(id);
+        newUserAdmin.setEmail(userAdmin.getEmail());
+        newUserAdmin.setName(userAdmin.getName());
+        newUserAdmin.setPassword(userAdmin.getPassword());
+        newUserAdmin.setLocationLat(userAdmin.getLocationLat());
+        newUserAdmin.setLocationLong(userAdmin.getLocationLong());
+        newUserAdmin.setRestaurants(userAdmin.getRestaurants());
+        return repository.save(newUserAdmin);
+    }
+
 }

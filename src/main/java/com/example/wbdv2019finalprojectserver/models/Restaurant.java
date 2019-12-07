@@ -18,6 +18,7 @@ public class Restaurant{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
+    private String name;
     private String yelpLink;
     @JsonIgnore
     @ManyToMany(mappedBy = "likedRestaurants")
@@ -33,6 +34,15 @@ public class Restaurant{
     public void setId(Integer Id) {
         this.Id = Id;
     }
+    
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
 
     public String getYelpLink() {
         return this.yelpLink;
