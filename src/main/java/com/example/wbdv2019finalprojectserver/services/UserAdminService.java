@@ -33,13 +33,27 @@ public class UserAdminService{
     public UserAdmin updateUseradmin(UserAdmin userAdmin, Integer id){
         UserAdmin newUserAdmin = repository.findUserAdminById(id);
         newUserAdmin.setId(id);
-        newUserAdmin.setEmail(userAdmin.getEmail());
-        newUserAdmin.setName(userAdmin.getName());
-        newUserAdmin.setUserName(userAdmin.getUserName());
-        newUserAdmin.setPassword(userAdmin.getPassword());
-        newUserAdmin.setLocationLat(userAdmin.getLocationLat());
-        newUserAdmin.setLocationLong(userAdmin.getLocationLong());
-        newUserAdmin.setRestaurants(userAdmin.getRestaurants());
+        if(userAdmin.getEmail()!=null){
+            newUserAdmin.setEmail(userAdmin.getEmail());
+        }
+        if(userAdmin.getName()!=null){
+            newUserAdmin.setName(userAdmin.getName());
+        }
+        if(userAdmin.getUserName()!=null){
+            newUserAdmin.setUserName(userAdmin.getUserName());
+        }
+        if(userAdmin.getPassword()!=null){
+            newUserAdmin.setPassword(userAdmin.getPassword());
+        }        
+        if(userAdmin.getLocationLat()!=null){
+            newUserAdmin.setLocationLat(userAdmin.getLocationLat());
+        }  
+        if(userAdmin.getLocationLong()!=null){
+            newUserAdmin.setLocationLong(userAdmin.getLocationLong());
+        } 
+        if(userAdmin.getRestaurants()!=null){
+            newUserAdmin.setRestaurants(userAdmin.getRestaurants());
+        }
         return repository.save(newUserAdmin);
     }
 

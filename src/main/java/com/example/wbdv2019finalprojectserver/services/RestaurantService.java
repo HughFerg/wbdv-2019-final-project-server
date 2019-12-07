@@ -32,10 +32,18 @@ public class RestaurantService{
 
     public Restaurant updateRestaurant(Restaurant restaurant, Integer id){
         Restaurant newRestaurant = repository.findRestaurantById(id);
-        newRestaurant.setAdmin(restaurant.getAdmin());
-        newRestaurant.setName(restaurant.getName());
-        newRestaurant.setUserLikes(restaurant.getUserLikes());
-        newRestaurant.setYelpLink(restaurant.getYelpLink());
+        if(restaurant.getAdmin()!=null){
+            newRestaurant.setAdmin(restaurant.getAdmin());
+        }
+        if(restaurant.getName()!=null){
+            newRestaurant.setName(restaurant.getName());
+        }
+        if(restaurant.getUserLikes()!=null){
+            newRestaurant.setUserLikes(restaurant.getUserLikes());
+        }
+        if(restaurant.getYelpLink()!=null){
+            newRestaurant.setYelpLink(restaurant.getYelpLink());
+        }  
         return repository.save(newRestaurant);
     }
     
