@@ -30,16 +30,16 @@ public class UserService{
     }
 
     public User updateUser(User user, Integer id){
-        User newUser = repository.findUserById(id);
-        newUser.setId(id);
-        newUser.setEmail(user.getEmail());
-        newUser.setLikedRestaurants(user.getLikedRestaurants());
-        newUser.setUserName(user.getUserName());
-        newUser.setName(user.getName());
-        newUser.setPassword(user.getPassword());
-        newUser.setLocationLat(user.getLocationLat());
-        newUser.setLocationLong(user.getLocationLong());
-        return repository.save(newUser);
+        // User newUser = repository.findUserById(id);
+        // newUser.setId(id);
+        // newUser.setEmail(user.getEmail());
+        // newUser.setLikedRestaurants(user.getLikedRestaurants());
+        // newUser.setUserName(user.getUserName());
+        // newUser.setName(user.getName());
+        // newUser.setPassword(user.getPassword());
+        // newUser.setLocationLat(user.getLocationLat());
+        // newUser.setLocationLong(user.getLocationLong());
+        return repository.save(user);
     }
 
 }
