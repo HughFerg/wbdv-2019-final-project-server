@@ -20,7 +20,7 @@ public class UserAdmin{
     private Double locationLong;
     private Double LocationLat;
 
-    @OneToMany(mappedBy = "useradmin")
+    @OneToMany(mappedBy = "admin")
     private List<Restaurant> restaurants;
 
     public Integer getId() {

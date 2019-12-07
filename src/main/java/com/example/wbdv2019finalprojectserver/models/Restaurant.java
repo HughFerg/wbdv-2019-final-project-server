@@ -23,9 +23,9 @@ public class Restaurant{
     @JsonIgnore
     @ManyToMany(mappedBy = "likedRestaurants")
     private List<User> userLikes;
-    @JsonIgnore
     @ManyToOne
-    private UserAdmin useradmin;
+    @JsonIgnore
+    private UserAdmin admin;
 
     public Integer getId() {
         return this.Id;
@@ -51,12 +51,12 @@ public class Restaurant{
     public void setYelpLink(String yelpLink) {
         this.yelpLink = yelpLink;
     }
-    public UserAdmin getUserAdmin() {
-        return this.useradmin;
+    public UserAdmin getAdmin() {
+        return this.admin;
     }
 
-    public void setUserAdmin(UserAdmin useradmin) {
-        this.useradmin = useradmin;
+    public void setAdmin(UserAdmin admin) {
+        this.admin = admin;
     }
 
     public List<User> getUserLikes() {

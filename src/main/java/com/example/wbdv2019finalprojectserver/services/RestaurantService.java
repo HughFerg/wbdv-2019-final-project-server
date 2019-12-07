@@ -32,8 +32,8 @@ public class RestaurantService{
 
     public Restaurant updateRestaurant(Restaurant restaurant, Integer id){
         Restaurant newRestaurant = repository.findRestaurantById(id);
-        if(restaurant.getUserAdmin()!=null){
-            newRestaurant.setUserAdmin(restaurant.getUserAdmin());
+        if(restaurant.getAdmin()!=null){
+            newRestaurant.setAdmin(restaurant.getAdmin());
         }
         if(restaurant.getName()!=null){
             newRestaurant.setName(restaurant.getName());
