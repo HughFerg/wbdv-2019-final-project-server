@@ -36,6 +36,22 @@ class UserAdminController {
         return uas.findUserAdminById(userId);
     }
 
+    @GetMapping("/api/useradmins/{username}")
+    public UserAdmin findUserByUserName(@PathVariable("username") String username) {
+        return uas.findUserByUserName(username);
+    }
+
+    @GetMapping("/api/login")
+    public String validateLogin(@RequestBody UserAdmin user) {
+        UserAdmin userLoggingIn = uas.findUserByUserName(user.getUserName());
+        if (userLoggingIn.getUserName().equals(user.getUserName())
+                && userLoggingIn.getPassword().equals(user.getPassword())) {
+            return "LOGIN_SUCCESS";
+        } else {
+            return "LOGIN_FAILURE";
+        }
+    }
+
     @DeleteMapping("/api/usersadmins/{id}")
     public void deleteUserAdmin(@PathVariable("id") Integer Id) {
         uas.deleteUserAdmin(Id);

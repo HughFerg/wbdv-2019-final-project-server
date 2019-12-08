@@ -23,6 +23,10 @@ public class UserAdminService {
         return repository.findUserAdminById(userId);
     }
 
+    public UserAdmin findUserByUserName(String userName) {
+        return repository.findUserByUserName(userName);
+    }
+
     public void deleteUserAdmin(Integer useradminId) {
         repository.deleteById(useradminId);
     }
@@ -57,7 +61,5 @@ public class UserAdminService {
         }
         return repository.save(newUserAdmin);
     }
-
-    
 
 }

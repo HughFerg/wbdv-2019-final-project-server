@@ -17,32 +17,49 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "*", allowCredentials = "true", allowedHeaders = "*")
 @RestController
-class UserController{
+class UserController {
 
     @Autowired
     UserService us;
 
     @GetMapping("/api/users")
-    public List<User> findAllUsers(){
-        return us.findAllUsers();       
+    public List<User> findAllUsers() {
+        return us.findAllUsers();
     }
+
     @GetMapping("/api/users/{userId}")
-    public User findUserById(@PathVariable("userId") Integer userId){
+    public User findUserById(@PathVariable("userId") Integer userId) {
         return us.findUserById(userId);
     }
 
+    @GetMapping("/api/users/{username}")
+    public User findUserByUserName(@PathVariable("username") String username) {
+        return us.findUserByUserName(username);
+    }
+
+    @GetMapping("/api/login")
+    public String validateLogin(@RequestBody User user) {
+        User userLoggingIn = us.findUserByUserName(user.getUserName());
+        if (userLoggingIn.getUserName().equals(user.getUserName())
+                && userLoggingIn.getPassword().equals(user.getPassword())) {
+            return "LOGIN_SUCCESS";
+        } else {
+            return "LOGIN_FAILURE";
+        }
+    }
+
     @DeleteMapping("/api/users/{id}")
-    public void deleteUser(@PathVariable("id") Integer Id){
+    public void deleteUser(@PathVariable("id") Integer Id) {
         us.deleteUser(Id);
     }
 
     @PostMapping("/api/users")
-    public User createUser(@RequestBody User user){
+    public User createUser(@RequestBody User user) {
         return us.createUser(user);
     }
 
     @PutMapping("/api/users/{id}")
-    public User updateUser(@PathVariable("id") Integer id, @RequestBody User user){
+    public User updateUser(@PathVariable("id") Integer id, @RequestBody User user) {
         return us.updateUser(user, id);
     }
 
