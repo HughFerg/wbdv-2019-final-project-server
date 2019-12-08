@@ -26,6 +26,13 @@ public class UserAdmin {
     @OneToMany(mappedBy = "admin")
     private List<Restaurant> restaurants;
 
+    public void ownsRestaurant(Restaurant restaurant) {
+        this.restaurants.add(restaurant);
+        if (restaurant.getAdmin() != this) {
+            restaurant.setAdmin(this);
+        }
+    }
+
     public Integer getId() {
         return this.id;
     }

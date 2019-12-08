@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "restaurants")
-public class Restaurant{
+public class Restaurant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
@@ -34,7 +34,7 @@ public class Restaurant{
     public void setId(Integer Id) {
         this.Id = Id;
     }
-    
+
     public String getName() {
         return this.name;
     }
@@ -43,7 +43,6 @@ public class Restaurant{
         this.name = name;
     }
 
-
     public String getYelpLink() {
         return this.yelpLink;
     }
@@ -51,12 +50,17 @@ public class Restaurant{
     public void setYelpLink(String yelpLink) {
         this.yelpLink = yelpLink;
     }
+
     public UserAdmin getAdmin() {
         return this.admin;
     }
 
     public void setAdmin(UserAdmin admin) {
         this.admin = admin;
+        if (!admin.getRestaurants().contains(this)) {
+            admin.getRestaurants().add(this);
+        }
+
     }
 
     public List<User> getUserLikes() {
