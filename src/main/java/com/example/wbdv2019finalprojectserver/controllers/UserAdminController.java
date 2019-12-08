@@ -41,7 +41,7 @@ class UserAdminController {
         return uas.findUserByUserName(username);
     }
 
-    @GetMapping("/api/login")
+    @GetMapping("/api/useradmins/login")
     public String validateLogin(@RequestBody UserAdmin user) {
         UserAdmin userLoggingIn = uas.findUserByUserName(user.getUserName());
         if (userLoggingIn.getUserName().equals(user.getUserName())
