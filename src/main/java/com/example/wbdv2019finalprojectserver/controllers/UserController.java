@@ -32,19 +32,19 @@ class UserController {
         return us.findUserById(userId);
     }
 
-    @GetMapping("/api/users/{username}")
-    public User findUserByUserName(@PathVariable("username") String username) {
-        return us.findUserByUserName(username);
-    }
+    // @GetMapping("/api/users/{username}")
+    // public User findUserByUserName(@PathVariable("username") String username) {
+    //     return us.findUserByUserName(username);
+    // }
 
     @GetMapping("/api/login")
-    public String validateLogin(@RequestBody User user) {
+    public User validateLogin(@RequestBody User user) throws Exception{
         User userLoggingIn = us.findUserByUserName(user.getUserName());
         if (userLoggingIn.getUserName().equals(user.getUserName())
                 && userLoggingIn.getPassword().equals(user.getPassword())) {
-            return "LOGIN_SUCCESS";
+            return us.findUserByUserName(user.getUserName());
         } else {
-            return "LOGIN_FAILURE";
+            throw new Exception("invalid login");
         }
     }
 

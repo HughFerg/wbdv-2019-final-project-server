@@ -36,19 +36,19 @@ class UserAdminController {
         return uas.findUserAdminById(userId);
     }
 
-    @GetMapping("/api/useradmins/{username}")
-    public UserAdmin findUserByUserName(@PathVariable("username") String username) {
-        return uas.findUserByUserName(username);
-    }
+    // @GetMapping("/api/useradmins/{username}")
+    // public UserAdmin findUserByUserName(@PathVariable("username") String username) {
+    //     return uas.findUserByUserName(username);
+    // }
 
     @GetMapping("/api/useradmins/login")
-    public String validateLogin(@RequestBody UserAdmin user) {
+    public UserAdmin validateLogin(@RequestBody UserAdmin user) throws Exception{
         UserAdmin userLoggingIn = uas.findUserByUserName(user.getUserName());
         if (userLoggingIn.getUserName().equals(user.getUserName())
                 && userLoggingIn.getPassword().equals(user.getPassword())) {
-            return "LOGIN_SUCCESS";
+            return uas.findUserByUserName(user.getUserName());
         } else {
-            return "LOGIN_FAILURE";
+            throw new Exception("invalid login");
         }
     }
 
