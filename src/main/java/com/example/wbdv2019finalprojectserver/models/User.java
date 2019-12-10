@@ -17,6 +17,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private boolean isAdmin = false;
     private String name;
     private String email;
     private String userName;
@@ -41,6 +42,10 @@ public class User {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public boolean getIsAdmin(){
+        return this.isAdmin;
     }
 
     public String getName() {
