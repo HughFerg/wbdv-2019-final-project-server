@@ -2,7 +2,9 @@ package com.example.wbdv2019finalprojectserver.controllers;
 
 import java.util.List;
 
+import com.example.wbdv2019finalprojectserver.models.Restaurant;
 import com.example.wbdv2019finalprojectserver.models.User;
+import com.example.wbdv2019finalprojectserver.services.RestaurantService;
 import com.example.wbdv2019finalprojectserver.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,8 @@ class UserController {
 
     @Autowired
     UserService us;
+    @Autowired
+    RestaurantService rs;
 
     @GetMapping("/api/users")
     public List<User> findAllUsers() {
@@ -61,6 +65,15 @@ class UserController {
     @PutMapping("/api/users/{id}")
     public User updateUser(@PathVariable("id") Integer id, @RequestBody User user) {
         return us.updateUser(user, id);
+    }
+
+    @PutMapping("/api/users/{uid}/restaurants/{rid}")
+    public User likeRestaurant(@PathVariable("uid") Integer uid, @PathVariable("rid") Integer rid){
+        User editedUser = us.findUserById(uid);
+        List<Restaurant> tempList = editedUser.getLikedRestaurants();
+        tempList.add(rs.findRestaurantById(rid));
+        editedUser.setLikedRestaurants(tempList);
+        return us.updateUser(editedUser, uid);
     }
 
 }
