@@ -38,11 +38,11 @@ class UserController {
 
     // @GetMapping("/api/users/{username}")
     // public User findUserByUserName(@PathVariable("username") String username) {
-    //     return us.findUserByUserName(username);
+    // return us.findUserByUserName(username);
     // }
 
-    @GetMapping("/api/login")
-    public User validateLogin(@RequestBody User user) throws Exception{
+    @PostMapping("/api/login")
+    public User validateLogin(@RequestBody User user) throws Exception {
         User userLoggingIn = us.findUserByUserName(user.getUserName());
         if (userLoggingIn.getUserName().equals(user.getUserName())
                 && userLoggingIn.getPassword().equals(user.getPassword())) {
@@ -68,7 +68,7 @@ class UserController {
     }
 
     @PutMapping("/api/users/{uid}/restaurants/{rid}")
-    public User likeRestaurant(@PathVariable("uid") Integer uid, @PathVariable("rid") Integer rid){
+    public User likeRestaurant(@PathVariable("uid") Integer uid, @PathVariable("rid") Integer rid) {
         User editedUser = us.findUserById(uid);
         List<Restaurant> tempList = editedUser.getLikedRestaurants();
         tempList.add(rs.findRestaurantById(rid));
