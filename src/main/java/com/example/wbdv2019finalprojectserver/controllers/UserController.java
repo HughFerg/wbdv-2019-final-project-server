@@ -36,10 +36,10 @@ class UserController {
         return us.findUserById(userId);
     }
 
-    // @GetMapping("/api/users/{username}")
-    // public User findUserByUserName(@PathVariable("username") String username) {
-    // return us.findUserByUserName(username);
-    // }
+    @GetMapping("/api/users/{username}")
+    public User findUserByUserName(@PathVariable("username") String username) {
+        return us.findUserByUserName(username);
+    }
 
     @PostMapping("/api/login")
     public User validateLogin(@RequestBody User user) throws Exception {
