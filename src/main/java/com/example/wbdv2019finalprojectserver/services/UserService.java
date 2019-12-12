@@ -21,8 +21,8 @@ public class UserService {
         return repository.findUserById(userId);
     }
 
-    public User findUserByUserName(String userName) {
-        return repository.findUserByUserName(userName);
+    public List<User> findUsersByUserName(String userName) {
+        return repository.findUsersByUserName(userName);
     }
 
     public void deleteUser(Integer userId) {

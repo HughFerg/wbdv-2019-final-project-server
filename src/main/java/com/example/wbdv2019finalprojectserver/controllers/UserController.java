@@ -43,13 +43,23 @@ class UserController {
 
     @PostMapping("/api/login")
     public User validateLogin(@RequestBody User user) throws Exception {
-        User userLoggingIn = us.findUserByUserName(user.getUserName());
-        if (userLoggingIn.getUserName().equals(user.getUserName())
-                && userLoggingIn.getPassword().equals(user.getPassword())) {
-            return us.findUserByUserName(user.getUserName());
-        } else {
-            throw new Exception("invalid login");
+        List<User> result = us.findUsersByUserName(user.getUserName());
+        if (result.size() >= 1) {
+            User u = attemptLoginUsers(result, user);
+            if (u != null) return u;
         }
+        else throw new Exception("invalid login");
+        return null;
+    }
+
+    private User attemptLoginUsers(List<User> list, User user) {
+        for (User userLoggingIn : list) {
+            if (userLoggingIn.getUserName().equals(user.getUserName())
+                    && userLoggingIn.getPassword().equals(user.getPassword())) {
+                return us.findUserById(user.getId());
+            }
+        }
+        return null;
     }
 
     @DeleteMapping("/api/users/{id}")
